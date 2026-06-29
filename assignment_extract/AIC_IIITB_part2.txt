@@ -1,0 +1,1651 @@
+
+--- PAGE 1 ---
+Hands-On AI Projects
+House Prices — Advanced Regression Techniques
+A Kaggle Competition · 3 Sessions · 3 + 3 + 3 = 9 hours total
+IIIT Bangalore × Aivancity
+Instructor: Pr Fayçal Braham
+1
+
+--- PAGE 2 ---
+About this Course
+A hands-on workshop, not a lecture series — code, train, submit, iterate
+We follow one real Kaggle project from start to finish — the technical foundation of your group's startup project
+9 hours of tabular ML, plus a 2-hour bonus session where you'll build an AI agent that uses your own trained
+model as a tool
+Goal: be autonomous on tabular regression problems, and understand how modern AI agents work in practice
+2
+
+--- PAGE 3 ---
+The Kaggle Competition
+House Prices — Advanced Regression Techniques
+Goal: predict the final sale price of homes in Ames, Iowa
+Dataset: 79 explanatory variables describing every aspect of a residential home
+Training set: 1460 houses with known sale prices
+Test set: 1459 houses — you predict their prices
+Evaluation metric: RMSLE — Root Mean Squared Log Error
+Link: kaggle.com/competitions/house-prices-advanced-regression-techniques
+3
+
+--- PAGE 4 ---
+Beyond Kaggle — Your Group's Startup Project
+This course is the technical foundation of a broader business project.
+Your final group deliverable
+Imagine you and your teammates are launching a startup around House Price Prediction. You will deliver:
+1.  Build the AI — that's what we'll do together in these 9 hours (Kaggle competition)
+2.  Design the Business Model Canvas — value proposition, customers, revenue streams
+3.  Identify your top 3 competitors — and define your unique positioning
+4.  Run PESTEL & SWOT analyses — the strategic environment of your venture
+5.  Tackle ethics, data governance and regulation — short-term and long-term challenges
+My role in this journey
+I focus on the  technical part — turning your idea into a working ML model.
+Other professors will guide you through the business strategy parts (2 → 5).
+Your Kaggle work is the technical engine that powers your startup project. Everything else — business canvas,
+competitors, ethics — builds on this foundation.
+4
+
+--- PAGE 5 ---
+Startup Ideas — B2C (consumer-facing)
+Pick one direction below, or invent your own — these are just to spark ideas.
+ FairPrice — "Is this house worth its asking price?"
+Mobile app: user scans a listing, app returns predicted fair value + verdict (Underpriced / Fair / Overpriced).
+Target: first-time buyers · Competitors: Zillow Zestimate, Redfin Estimate
+ OptimalAsk — "What price should I list my house at?"
+For sellers: analyses the property and suggests the optimal asking price to sell fast without leaving money on the table.
+Target: home sellers · Competitors: Realtor.com, Opendoor
+ RenovationROI — "How much value would this renovation add?"
+Uses SHAP / feature importance to answer: "Adding a second bathroom adds ~$15k." Visual, actionable.
+Differentiator: turns model interpretability into the actual product · Natural extension of your Kaggle work
+ RentVsBuy — "Should you buy or keep renting?"
+For young professionals: combines salary, savings, current rent, and predicted property values to recommend a buy timing.
+Target: millennials, Gen Z · Competitors: NerdWallet, basic rent-vs-buy calculators
+5
+
+--- PAGE 6 ---
+Startup Ideas — B2B & Niche Markets
+ AgentPro — SaaS dashboard for real estate agents
+Pricing recommendations, comparable listings, local market trends. Classic B2B SaaS.
+Target: independent agents, small agencies · Competitors: HouseCanary, ATTOM
+ LoanCollat AVM — Automated Valuation Model for banks
+Instant property valuation during mortgage underwriting → cuts manual appraisal cost from ~$500 to ~$5.
+Target: banks, lending fintechs · Competitors: CoreLogic, Quantarium
+ InsureValue — for home insurers
+Estimates rebuild value + market value for insurance pricing. Fights underinsurance and fraud.
+Target: insurance companies · Competitors: Verisk, CoreLogic
+ FlipScout — for property investors and house-flippers
+Detects undervalued properties (large negative residuals: listed price << model prediction).
+Differentiator: leverages prediction residuals as the opportunity signal
+ HomeValu India — Zestimate-like product for India
+No dominant equivalent exists yet — large unserved market. Highly relevant for IIIT Bangalore students.
+Competitors: 99acres, MagicBricks, Housing.com (none has a mature Zestimate-like feature)
+ ClimaValue — climate-aware property valuation
+Adjusts prices for flood, wildfire, heatwave risks. Strong ESG angle.
+ PropTax Fair — fairness audit of property tax assessments (B2G)
+Detects systemic bias (e.g. over-valuation in low-income neighbourhoods). Strong social impact angle.
+6
+
+--- PAGE 7 ---
+Learning Objectives
+By the end of these three sessions, you will be able to:
+Conduct a complete EDA on a real-world tabular dataset
+Handle missing values, outliers, and skewed distributions
+Build clean scikit-learn pipelines with preprocessing + model
+Train and tune linear, tree-based, kernel, and neural models
+Use cross-validation and GridSearchCV for hyperparameter tuning
+Combine models with ensemble learning — voting, weighted averaging, stacking
+Submit predictions to a Kaggle competition
+Each group will present their work at the end — including a personal extension they explored on their own
+Build the AI engine that powers your group's startup project.
+7
+
+--- PAGE 8 ---
+Course at a Glance
+Session Duration Topic Key Deliverable
+1 3h Problem framing · EDA · Linear models First baseline submission
+2 3h Tree-based models — RF, XGBoost, LightGBM, CatBoost Best tree-model submission
+3 3h SVM · Neural Networks (MLP) · Ensemble Learning Final ensembled submission
+Total: 9 hours of hands-on machine learning.
+8
+
+--- PAGE 9 ---
+Session 1
+Problem framing · EDA · Linear models
+3 hours
+9
+
+--- PAGE 10 ---
+Session 1 — Detailed Plan
+Block Type Content
+1 Setup JupyterLab install · Kaggle account · dataset download
+2 Course Supervised regression · workflow · RMSLE metric
+3 Lab Full EDA: target skewness · missing values · correlations · outliers
+4 Course Linear regression · Ridge · Lasso · bias-variance
+5 Lab Pipeline · baseline LinearRegression · GridSearchCV on α · first submission
+10
+
+--- PAGE 11 ---
+Session 2
+Tree-based models
+3 hours
+11
+
+--- PAGE 12 ---
+Session 2 — Detailed Plan
+Block Type Content
+1 Course Decision trees → bagging → boosting · XGBoost / LightGBM / CatBoost
+2 Lab Random Forest baseline · feature importance · GridSearchCV · XGBoost with early stopping
+3 Lab XGBoost + Target Encoding · LightGBM (speed) · CatBoost (native categoricals) ·
+comparison table
+4 Wrap-
+up Which model to choose and why
+12
+
+--- PAGE 13 ---
+Session 3
+SVM · Neural Networks (MLP) · Ensemble Learning
+3 hours
+13
+
+--- PAGE 14 ---
+Session 3 — Detailed Plan
+Block Type Content
+1 Course SVM: margin · kernel trick (intuition) · SVR for regression
+2 Lab SVR linear · SVR RBF · GridSearch on C, gamma, epsilon
+3 Course Neuron · MLP · forward/backprop (high-level) · NN on tabular?
+4 Lab MLPRegressor (sklearn) · comparison vs tree-based
+5 Course +
+Lab
+Ensemble Learning · voting · weighted averaging · stacking · SHAP · final submission ·
+going further
+14
+
+--- PAGE 15 ---
+Prerequisites
+Python
+Comfortable with pandas — DataFrames, indexing, filtering, basic operations
+Basic Python — functions, loops, list comprehensions
+No advanced numpy required
+Math
+High-school algebra is enough
+A bit of calculus helps but is not mandatory
+We focus on intuition first, formulas second
+Tools
+A laptop with Python 3.10 or higher
+A free Kaggle account (to submit predictions)
+We will install JupyterLab together in Session 1, Block 1
+15
+
+--- PAGE 16 ---
+Deliverables
+By the end of the course, each of you will have:
+1. A clean Jupyter notebook documenting your full workflow
+2. Multiple Kaggle submissions — at least one per session
+3. A final ensembled submission showing your best leaderboard score
+4. The ability to repeat the workflow on any tabular regression problem
+No exam, no grading. The goal is to learn by doing.
+Your Kaggle public score is your feedback signal.
+16
+
+--- PAGE 17 ---
+Resources
+Competition: kaggle.com/competitions/house-prices-advanced-regression-techniques
+Scikit-learn: scikit-learn.org/stable
+XGBoost: xgboost.readthedocs.io
+LightGBM: lightgbm.readthedocs.io
+CatBoost: catboost.ai
+Recommended book: Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow — Aurélien Géron (3rd
+edition, O'Reilly)
+17
+
+--- PAGE 18 ---
+Let's start.
+Session 1 begins now.
+18
+
+--- PAGE 19 ---
+Block 1 : Setup — JupyterLab
+Don't have JupyterLab yet? Install Anaconda — it's the simplest path
+Anaconda is a single installer that bundles everything we need today: Python, JupyterLab, pandas, matplotlib, seaborn,
+scikit-learn.
+Download: anaconda.com/download
+Already have JupyterLab? Just launch it
+jupyter lab
+A browser tab opens at http://localhost:8888/lab — you are ready.
+19
+
+--- PAGE 20 ---
+Setup — Kaggle Account & Dataset
+1. Create a free Kaggle account
+Sign up at kaggle.com — it takes one minute.
+Tip: verify your phone number to enable competition submissions.
+2. Join the competition
+Go to kaggle.com/competitions/house-prices-advanced-regression-techniques
+→ Click "Join Competition" → accept the rules.
+3. Download the data
+From the Data tab, download these four files:
+train.csv — 1460 houses with known sale prices
+test.csv — 1459 houses to predict
+sample_submission.csv — required submission format
+data_description.txt — read this! Explains every feature in plain English
+Place all four files in your project folder, next to your notebook.
+20
+
+--- PAGE 21 ---
+Block 2 : Supervised Regression — The Big Picture
+Supervised learning: we have a dataset of (input, output) pairs, and we want a model that learns to map inputs to
+outputs.
+Two flavours
+Classification → output is a category (cat or dog? spam or not?)
+Regression → output is a number (price, temperature, age...)
+Our problem
+SalePrice is a continuous number in dollars → this is a regression problem.
+We will train a model on 1460 labeled houses, then use it to predict the sale prices of 1459 unseen houses.
+21
+
+--- PAGE 22 ---
+The Machine Learning Workflow
+Every ML project follows roughly the same six steps. We will do all six in this course.
+# Step What we do
+1 Explore Load the data, understand the features and the target
+2 Preprocess Handle missing values, encode categoricals, scale features
+3 Train Fit a model on the training set
+4 Evaluate Measure performance with cross-validation (RMSLE)
+5 Tune Search for the best hyperparameters (GridSearchCV)
+6 Predict & Submit Generate predictions on the test set, upload to Kaggle
+Iterate: most of the time you go back to step 1 or 2 after seeing your score.
+22
+
+--- PAGE 23 ---
+The Evaluation Metric — RMSE on log(SalePrice)
+Kaggle scores your submission with RMSE between the log of the predicted price and the log of the observed price:
+Why the log?
+Relative error matters more than absolute error
+A $20k error on a $100k house → 20% off → bad
+A $20k error on a $700k house → 3% off → fine
+Taking the log makes the metric penalise percentage errors equally across all price ranges
+The practical trick
+Predict log(SalePrice) directly → then a standard RMSE on log-prices is exactly the Kaggle score.
+Easier to optimise — and the leaderboard score is identical.
+23
+
+--- PAGE 24 ---
+Block 3 Lab — Exploratory Data Analysis
+Now we open a notebook and look at the data ourselves.
+What we want to answer
+1. What does the target (SalePrice) look like? Is it skewed?
+2. How many missing values do we have, and where are they?
+3. What are the top features correlated with the target?
+4. Are there any obvious outliers we should worry about?
+Tools
+A new Jupyter notebook: house_prices.ipynb
+Libraries: pandas, matplotlib, seaborn
+Open a notebook, import the libraries, and load train.csv. Then we look at it together.
+24
+
+--- PAGE 25 ---
+First Look at the Data
+# Load the train and test data, then take a first look (markdown)
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+train = pd.read_csv("train.csv")
+test  = pd.read_csv("test.csv")
+print(train.shape, test.shape)
+train.head()
+What to observe
+Train shape: (1460, 81) — 1460 houses, 79 features + Id + SalePrice
+Test shape: (1459, 80) — same, minus SalePrice (what we predict)
+.head() shows a mix of numerical features (LotArea, YearBuilt...) and categorical ones (Neighborhood,
+HouseStyle...)
+Some NaN values already visible — we will quantify them next
+Also run train.info() and train.describe() to see dtypes and basic stats.
+25
+
+--- PAGE 26 ---
+The Target — SalePrice Distribution
+# Plot SalePrice distribution: raw vs log-transformed (with skewness in titles) (markdown)
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+sns.histplot(train["SalePrice"], kde=True, ax=axes[0])
+axes[0].set_title(f"Raw  —  skew = {train['SalePrice'].skew():.2f}")
+sns.histplot(np.log(train["SalePrice"]), kde=True, ax=axes[1], color="green")
+axes[1].set_title(f"log(SalePrice)  —  skew = {np.log(train['SalePrice']).skew():.2f}")
+plt.tight_layout()
+What you see
+Raw SalePrice: skew ≈ 1.88 — long right tail, expensive houses dominate
+log(SalePrice): skew ≈ 0.12 — nearly symmetric, almost Gaussian
+Linear models love Gaussian-shaped targets → we will train on log(SalePrice) from now on
+Kaggle's metric is already in log-space → this also directly optimises the right thing
+26
+
+--- PAGE 27 ---
+Skewness — and Why We Care
+What is skewness?
+A number that measures the asymmetry of a distribution:
+Skew = 0 → symmetric, bell-shaped (like a Gaussian)
+Skew > 0 (right-skewed) → long tail on the right — a few large values pull the mean up
+Skew < 0 (left-skewed) → long tail on the left — a few small values pull the mean down
+Why we want a near-Gaussian target
+1. Linear models (Ridge, Lasso) assume residuals ≈ Gaussian — easier to satisfy when y itself is symmetric
+2. Stabilises variance: errors become relative (% of the price), not absolute — same fairness across cheap and luxury
+houses
+3. Compresses outliers: extreme luxury prices no longer dominate the loss
+4. Matches the Kaggle metric: log-RMSE is already a log score → training on log(y) directly optimises the right
+thing
+Tree models (RF, XGBoost, ...) are less sensitive to target shape — but the log transform still helps them via point 4
+(metric alignment).
+27
+
+--- PAGE 28 ---
+Missing Values — Audit
+# Count missing values per column and show the top 20 most affected (markdown)
+missing = train.isnull().sum()
+missing = missing[missing > 0].sort_values(ascending=False)
+missing_pct = (missing / len(train) * 100).round(1)
+pd.DataFrame({"count": missing, "percent": missing_pct}).head(20)
+What you'll see (top columns)
+Column Missing % What it means
+PoolQC 99.5% NA = no pool — not "missing"
+MiscFeature 96.3% NA = no extra feature
+Alley 93.8% NA = no alley access
+Fence 80.8% NA = no fence
+MasVnrType 59.7% NA = no masonry veneer
+FireplaceQu 47.3% NA = no fireplace
+LotFrontage 17.7% Truly missing — unknown, not absent
+How would you handle each case? (2 minutes — discuss with your neighbour)
+Categorical, NA = absent → fill with ? · which features?
+Categorical, truly missing (unknown ≠ absent) → fill with ? · which features?
+Numerical, truly missing → fill with ? · which features?
+28
+
+--- PAGE 29 ---
+Missing Values — Strategy
+Case Fill with Examples in this dataset
+Categorical, NA = absent "None" PoolQC , MiscFeature , Alley , Fence , MasVnrType , FireplaceQu , garage & basement type columns
+Categorical, truly missing mode (most frequent) Electrical  (1 NaN), MSZoning , Functional
+Numerical, truly missing median (robust to outliers) LotFrontage , MasVnrArea
+Special case
+GarageYrBlt is NaN when there is no garage → fill with 0 (or with YearBuilt), not with the median.
+Practical implementation: we will do all this inside a sklearn pipeline with SimpleImputer — cleaner than fillna everywhere.
+29
+
+--- PAGE 30 ---
+Missing Values — Filling the "NA = absent" Cases Now
+# Categorical columns where NaN means "absent" (from data_description.txt) (markdown)
+absent_cols = [
+    "PoolQC", "MiscFeature", "Alley", "Fence", "MasVnrType",
+    "FireplaceQu",
+    "BsmtQual", "BsmtCond", "BsmtExposure", "BsmtFinType1", "BsmtFinType2",
+    "GarageType", "GarageFinish", "GarageQual", "GarageCond",
+]
+for col in absent_cols:
+    train[col] = train[col].fillna("None")
+    test[col]  = test[col].fillna("None")
+# Special numerical case: GarageYrBlt = 0 when no garage (markdown)
+train["GarageYrBlt"] = train["GarageYrBlt"].fillna(0)
+test["GarageYrBlt"]  = test["GarageYrBlt"].fillna(0)
+Why do it now (and not inside the pipeline)?
+Knowing that NaN = "absent" requires reading the documentation — sklearn can't guess it
+These fills are deterministic: the same value everywhere, no need for cross-validation safety
+The truly missing ones?
+Handled later in Block 5 inside our sklearn pipeline:
+SimpleImputer(strategy="median") for numerical → LotFrontage, MasVnrArea
+SimpleImputer(strategy="most_frequent") for categorical → Electrical, MSZoning
+30
+
+--- PAGE 31 ---
+Numerical Features — Correlation with SalePrice
+# Top 10 numerical features most correlated with SalePrice (markdown)
+num_cols = train.select_dtypes(include=np.number).columns
+corr_target = train[num_cols].corr()["SalePrice"].abs().sort_values(ascending=False)
+print(corr_target.head(11))   # head(11) because SalePrice itself is at the top
+Top 10
+Feature corr with SalePrice
+OverallQual 0.79
+GrLivArea 0.71
+GarageCars 0.64
+GarageArea 0.62
+TotalBsmtSF 0.61
+1stFlrSF 0.61
+FullBath 0.56
+TotRmsAbvGrd 0.53
+YearBuilt 0.52
+YearRemodAdd 0.51
+31
+
+--- PAGE 32 ---
+What These Correlations Tell Us
+Two key takeaways
+Quality and surface dominate — OverallQual (0.79) and GrLivArea (0.71) are by far the strongest predictors
+Some features carry the same information: GarageCars  GarageArea, TotalBsmtSF  1stFlrSF
+Multicollinearity
+When two features encode essentially the same information, we call it multicollinearity:
+Bad for linear models (OLS, Ridge, Lasso): coefficients become unstable, their signs may flip
+Harmless for tree-based models: a tree picks one of the two features and ignores the other
+We will see in Block 5 how Ridge and especially Lasso regularisation specifically tame multicollinearity.
+32
+
+--- PAGE 33 ---
+Heatmap — Spotting Multicollinearity Visually
+# Heatmap of top 10 features + SalePrice (markdown)
+top_features = corr_target.head(11).index   # includes SalePrice
+plt.figure(figsize=(10, 8))
+sns.heatmap(train[top_features].corr(), annot=True, fmt=".2f",
+            cmap="coolwarm", center=0, square=True)
+plt.show()
+Run the code, look at the heatmap carefully.
+What do you notice?
+33
+
+--- PAGE 34 ---
+Heatmap — What You Should See
+Last row / column = correlation of each feature with SalePrice (matches the table from before)
+Hot off-diagonal cells = two features highly correlated with each other → multicollinearity at a glance:
+GarageCars  GarageArea ≈ 0.88
+GrLivArea  TotRmsAbvGrd ≈ 0.83
+TotalBsmtSF  1stFlrSF ≈ 0.82
+These hot spots tell you: "pick one, drop the other" — or let regularisation handle it
+34
+
+--- PAGE 35 ---
+Outliers — GrLivArea vs SalePrice
+# Scatter: GrLivArea vs SalePrice — look for points that break the pattern (markdown)
+plt.figure(figsize=(8, 5))
+sns.scatterplot(data=train, x="GrLivArea", y="SalePrice")
+plt.title("GrLivArea vs SalePrice")
+plt.show()
+Run the code and look at the scatter plot carefully.
+Do you see any suspicious points? What would you do with them?
+35
+
+--- PAGE 36 ---
+Outliers — What You Should See
+4 points with GrLivArea > 4000, but only 2 are real outliers
+2 cheap outliers: huge surface, very low price (~$200k for 4500+ sq ft) → unmistakable anomalies (probably partial sales, family transfers,
+distressed properties)
+2 large + expensive houses: huge surface AND high price → just big luxury houses, they follow the trend → we keep them
+Remove only the 2 real outliers
+# Drop the 2 real outliers: huge surface but very low price (markdown)
+mask = (train["GrLivArea"] > 4000) & (train["SalePrice"] < 300000)
+train = train[~mask].reset_index(drop=True)
+print(train.shape)   # (1458, 81) — 2 rows removed
+Note: The author of the dataset, Dean De Cock, recommends removing all 4 points with GrLivArea > 4000.
+We take a more conservative stance: keep the 2 expensive ones — they are legitimate data, not anomalies.
+Outlier removal is always done on the training set only.
+36
+
+--- PAGE 37 ---
+EDA — Wrap-Up
+Done in this lab
+ Target → log(SalePrice) (skew 1.88 → 0.12)
+ Missing: filled "None" / 0 for "absent" cases
+ Correlations: top predictors + 3 multicollinearity pairs identified
+ Outliers: removed 2 cheap-and-huge houses
+Still to do in Block 5 (inside the sklearn pipeline)
+Impute remaining missing values: median (numerical) · mode (categorical)
+Scale numerical features (essential for linear models)
+Encode categoricals — two scenarios to compare:
+Scenario A → OneHotEncoder (Block 5 — today's baseline)
+Scenario B → Target Encoding (Session 2 — alternative encoding)
+Optional — Scenario C (combines with A or B)
+Apply log1p or Box-Cox on skewed numerical features (LotArea, 1stFlrSF, ...) → may boost linear models.
+Scenario C acts on numerical features, while A and B act on categorical features → no conflict, they stack. If we have time, run C on top of Scenario
+A.
+37
+
+--- PAGE 38 ---
+Block 4 : Linear Regression — The Simplest Baseline
+The model
+A linear regression predicts the target as a weighted sum of the features:
+Training = finding the coefficients  that minimise the sum of squared errors:
+Why start here?
+Fast and interpretable — each coefficient tells you "how much one extra unit of this feature adds to the prediction"
+No hyperparameters for plain OLS: Ordinary Least Squares — nothing to tune
+A solid baseline to beat with all later models
+38
+
+--- PAGE 39 ---
+Block 4 : Why Regularise? — The Multicollinearity Problem
+Recall from EDA
+We found 3 pairs of strongly correlated features:
+GarageCars  GarageArea (0.88)
+GrLivArea  TotRmsAbvGrd (0.83)
+TotalBsmtSF  1stFlrSF (0.82)
+The problem for OLS
+When two features carry the same information,  becomes nearly singular → its inverse explodes → coefficients become unstable and can flip
+sign on tiny data changes.
+Example — same model re-trained on slightly different subsets of the same data:
+Subset 1 Subset 2
+β_GarageCars +12 000 −3 000
+β_GarageArea −25 +40
+Wildly different coefficients — not trustworthy.
+The fix — regularisation
+Add a penalty on large coefficients to keep them small and stable:
+→ This is the idea behind Ridge (L2 penalty) and Lasso (L1 penalty).
+39
+
+--- PAGE 40 ---
+Ridge Regression — L2 Penalty
+The objective
+Plain OLS minimises:
+Ridge adds a squared penalty on the coefficients:
+What this does
+Shrinks all coefficients toward 0 — the large ones especially
+But coefficients are never exactly 0 (the squared term is smooth)
+Result: stable, bounded coefficients, even with multicollinearity
+The hyperparameter α (alpha)
+α Behaviour
+0 No penalty → identical to plain OLS
+small (e.g. 0.1 ) Light shrinkage
+large (e.g. 100 ) Heavy shrinkage → coefficients near 0 → underfit
+→ ∞ All coefficients pushed to 0
+→ The optimal α is data-dependent. We tune it with GridSearchCV in Block 5.
+40
+
+--- PAGE 41 ---
+Lasso Regression — L1 Penalty
+The objective
+Lasso adds an absolute-value penalty on the coefficients:
+Compare with Ridge: penalty was  (squared, not absolute value).
+The key difference vs Ridge
+Like Ridge: shrinks coefficients toward 0
+Unlike Ridge: pushes useless coefficients exactly to 0 → automatic feature selection
+Why? The V-shape (see next slide)
+The L1 penalty has a constant gradient near 0 (because of the absolute value's sharp corner at 0) → strong enough to push small coefficients all the
+way to 0. Ridge's smooth parabola loses its push near 0, so coefficients stay slightly non-zero.
+→ Result: a sparse model — only the most useful features survive.
+Lasso = Least Absolute Shrinkage and Selection Operator — the "selection" is literally in the name.
+41
+
+--- PAGE 42 ---
+Ridge vs Lasso — The Geometry of the Penalty
+# Visualize the two penalty shapes (markdown)
+beta = np.linspace(-2, 2, 200)
+ridge_penalty = beta ** 2
+lasso_penalty = np.abs(beta)
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.plot(beta, ridge_penalty, label="Ridge (L2): β²", lw=2.5)
+ax.plot(beta, lasso_penalty, label="Lasso (L1): |β|", lw=2.5)
+ax.axvline(0, color='gray', lw=0.5)
+ax.set_xlabel("Coefficient β"); ax.set_ylabel("Penalty value")
+ax.legend(); ax.grid(alpha=0.3)
+plt.show()
+What you see
+Ridge (L2) = smooth parabola → the curve flattens near 0 → the "push" toward 0 weakens
+Lasso (L1) = sharp V → the slope is constant (±1) → the push toward 0 stays strong
+→ That's why Lasso pushes coefficients exactly to 0, but Ridge only near 0.
+42
+
+--- PAGE 43 ---
+Ridge vs Lasso — Side-by-Side
+Ridge (L2) Lasso (L1)
+Penalty
+Geometry Smooth parabola Sharp V
+Coefficients Shrunk toward 0 Some shrunk, some exactly 0
+Feature selection  No  Yes (built-in)
+Best when… Many features, all somewhat useful Few features truly matter
+Multicollinearity Distributes weight across correlated features Picks one, drops the others
+Hyperparameter alpha alpha
+sklearn class Ridge(alpha=...) Lasso(alpha=...)
+Cannot decide? Use ElasticNet — a mix of L1 + L2, controlled by alpha (overall strength) and l1_ratio (mix between L1 and L2).
+43
+
+--- PAGE 44 ---
+ElasticNet — The Best of Both Worlds
+When you cannot decide between L1 and L2, use both with a tunable mix.
+The combined penalty
+Two hyperparameters
+Parameter What it controls Range
+alpha Overall strength of the penalty [0, ∞)  — higher = stronger shrinkage
+l1_ratio Mix between L1 and L2 [0, 1]  — 0 = pure Ridge, 1 = pure Lasso, 0.5 = balanced
+When to use it
+You suspect some features can be safely dropped (the L1 part handles this — sets them to 0)
+And the remaining features may be correlated with each other (the L2 part handles this — distributes weight evenly across correlated features)
+Best of both worlds: feature selection + graceful handling of multicollinearity
+Slightly slower to tune (2 hyperparameters instead of 1)
+sklearn usage
+from sklearn.linear_model import ElasticNet
+ElasticNet(alpha=0.001, l1_ratio=0.5, max_iter=10000)
+ A great candidate for your group's personal extension — run a GridSearch over both alpha and l1_ratio, and compare the result with
+your Ridge and Lasso scores.
+44
+
+--- PAGE 45 ---
+How Are These Models Actually Trained?
+OLS and Ridge — closed-form (matrix solution)
+For plain OLS and for Ridge, there is an exact mathematical formula that gives the optimal coefficients in a single matrix calculation:
+→ sklearn.linear_model.LinearRegression computes this directly. One shot, no iteration.
+Lasso, SVM, MLP — iterative methods
+For these models, no closed-form exists. sklearn uses an iterative algorithm:
+1. Start with random coefficients
+2. Compute how wrong the predictions are (the loss)
+3. Compute the gradients of the loss with respect to each coefficient
+4. Slightly adjust the coefficients in the direction that decreases the loss
+5. Repeat until the loss stops improving
+→ This idea — gradient descent — is the workhorse of modern ML, from Lasso to ChatGPT.
+Methods you will meet:
+Lasso → coordinate descent (updates one coefficient at a time)
+MLP → gradients computed via backpropagation (chain rule), weights updated by an optimizer (Adam, SGD…)
+45
+
+--- PAGE 46 ---
+Gradient Descent — The Update Rule + Visualization
+The update rule
+For each coefficient , at iteration :
+Symbol Meaning
+Value of coefficient  at iteration 
+Partial derivative of the loss w.r.t.  — the "slope" along direction 
+Learning rate — step size (typical: 0.001 to 0.1)
+→ Subtract a small fraction of the slope → move downhill toward smaller loss.
+Compact vector form: , where  is the gradient.
+46
+
+--- PAGE 47 ---
+Gradient Descent — The Update Rule + Visualization
+Visualise on a 1D convex loss
+# Toy: loss(β) = (β − 2)² + 1, start from β = −3 (markdown)
+loss = lambda b: (b - 2)**2 + 1
+grad = lambda b: 2*(b - 2)
+beta, lr = -3.0, 0.2
+trajectory = [beta]
+for _ in range(15):
+    beta = beta - lr * grad(beta)
+    trajectory.append(beta)
+bs = np.linspace(-4, 6, 200)
+plt.plot(bs, loss(bs), label="Loss")
+plt.scatter(trajectory, [loss(b) for b in trajectory], color="red", s=50, label="GD steps")
+plt.xlabel("β"); plt.ylabel("loss(β)"); plt.legend(); plt.show()
+What you see
+Steps shrink as we approach the minimum (the gradient shrinks too)
+ Convex loss (OLS, Ridge, Lasso, linear SVM) → guaranteed global minimum
+ Non-convex loss (MLP) → may get stuck in local minima → no guarantee
+47
+
+--- PAGE 48 ---
+Bias-Variance Tradeoff — The Concept
+The total prediction error of a model decomposes into three terms:
+Bias² — systematic error from a model that is too simple to capture the real relationship (underfitting)
+Variance — error from a model that sticks too closely to the specific training set, and gives wildly different predictions if retrained on slightly different
+data (overfitting)
+Irreducible noise — the random part of the data that no model can predict
+Term Meaning High when...
+Bias Systematic error from oversimplification Model is too simple → underfitting
+Variance Sensitivity to training data fluctuations Model is too complex → overfitting
+Irreducible noise Random noise in the data itself Always present — cannot reduce
+The tradeoff
+More complex model → less bias, but more variance
+Less complex model (more regularisation) → more bias, but less variance
+→ Regularisation deliberately adds bias to reduce variance.
+→ Net effect on total error is positive when the right balance is found.
+Irreducible noise:
+Imagine two identical houses in the dataset — same size, same neighbourhood, same year. They can still sell at different prices because of
+negotiation, timing, the seller's urgency, or the buyer's taste. None of our 79 features captures these random factors. So even a perfect model would
+still make this error — it is the absolute floor of our prediction error."
+48
+
+--- PAGE 49 ---
+The Bias-Variance U-Curve
+# Visualize the bias-variance tradeoff (markdown)
+complexity = np.linspace(0.5, 10, 100)
+bias2      = 5 / complexity
+variance   = 0.5 * complexity
+total      = bias2 + variance + 1
+optimal_idx        = np.argmin(total)
+optimal_complexity = complexity[optimal_idx]
+optimal_error      = total[optimal_idx]
+fig, ax = plt.subplots(figsize=(9, 5))
+ax.plot(complexity, bias2,    label="Bias²",       lw=2.5, color="dodgerblue")
+ax.plot(complexity, variance, label="Variance",    lw=2.5, color="crimson")
+ax.plot(complexity, total,    label="Total error", lw=3,   color="black")
+ax.axhline(1, ls=":", color="gray", label="Irreducible noise")
+ax.axvline(optimal_complexity, ls="--", color="gray", alpha=0.7)
+ax.annotate("Optimal\ncomplexity",
+            xy=(optimal_complexity, optimal_error),
+            xytext=(optimal_complexity + 1.5, optimal_error + 3),
+            fontsize=11,
+            arrowprops=dict(arrowstyle="->", color="gray"))
+ax.text(1.0, 9, "Underfit\n(high bias)",
+        ha="center", color="dodgerblue", fontsize=12, fontweight="bold")
+ax.text(8.5, 8, "Overfit\n(high variance)",
+        ha="center", color="crimson", fontsize=12, fontweight="bold")
+ax.set_xlabel("Model complexity →"); ax.set_ylabel("Error")
+ax.set_ylim(0, 12); ax.set_xlim(0, 10.5)
+ax.legend(loc="upper right"); ax.grid(alpha=0.2)
+plt.tight_layout(); plt.show()
+What you see
+Bias²  as complexity increases
+Variance  as complexity increases
+Total error has a clear U-shape →
+there is a sweet spot
+For Ridge/Lasso: high α = simple
+model (left) · low α = complex
+model (right)
+→ Goal: tune α to find the bottom of the
+U-curve.
+49
+
+--- PAGE 50 ---
+Block 5 — Time to Build the First Model
+After EDA + basic theory, we now have everything we need.
+Goals for this lab
+1. Build a clean sklearn pipeline: preprocessing + estimator
+2. Train a baseline LinearRegression and measure its CV score
+3. Tune Ridge and Lasso with GridSearchCV on the alpha parameter
+4. Compare the three linear models on the same cross-validation
+5. Generate test predictions → submit to Kaggle
+By the end of this block, every one of you will appear on the Kaggle public leaderboard with your first score.
+50
+
+--- PAGE 51 ---
+Preprocessing Pipeline — Goal & Justification
+This pipeline transforms our raw DataFrame — with missing values, strings, and mixed scales — into a clean numeric matrix that any linear model can
+train on.
+What we need to build
+A single sklearn object that, before any model:
+1. Separates features into numerical vs categorical groups
+2. Applies the right transformation to each group
+3. Plugs in before any estimator (LinearRegression, Ridge, Lasso, …)
+4. Re-fits inside each CV fold → no data leakage
+Why each step matters
+Step Why
+Impute median (numerical) Robust to outliers — better than the mean on skewed columns
+Scale numerical Ridge/Lasso penalise coefficient size → features must share the same scale
+Impute mode (categorical) Handles small truly-missing cases (Electrical  — 1 NaN, etc.)
+One-hot encode Math models cannot read strings — they need binary columns
+Once built, switching model is one line: Pipeline([("prep", preprocessor), ("model", Ridge())]). The preprocessing stays, only the
+estimator changes.
+51
+
+--- PAGE 52 ---
+Build the Pipeline — Your Turn
+Exercise
+Try to build the preprocessing pipeline yourself, end-to-end.
+Hints
+Useful imports from sklearn:
+compose.ColumnTransformer
+pipeline.Pipeline
+impute.SimpleImputer
+preprocessing.StandardScaler
+preprocessing.OneHotEncoder
+Get column lists by type:
+X.select_dtypes(include=np.number).columns.tolist()
+X.select_dtypes(include="object").columns.tolist()
+Use handle_unknown="ignore" on OneHotEncoder to be safe against unseen categories in the test set
+The target should be np.log(train["SalePrice"])
+Don't worry if you can't finish — we'll review the solution together on the next slide.
+52
+
+--- PAGE 53 ---
+Preprocessing Pipeline — Solution
+# Build the preprocessing pipeline (markdown)
+from sklearn.compose       import ColumnTransformer
+from sklearn.pipeline      import Pipeline
+from sklearn.impute        import SimpleImputer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+X = train.drop(columns=["Id", "SalePrice"])
+y = np.log(train["SalePrice"])     # log-target
+num_cols = X.select_dtypes(include=np.number).columns.tolist()
+cat_cols = X.select_dtypes(include="object").columns.tolist()
+# Numerical: impute median + scale
+num_pipe = Pipeline([
+    ("imputer", SimpleImputer(strategy="median")),
+    ("scaler",  StandardScaler()),
+])
+# Categorical: impute mode + one-hot encode
+cat_pipe = Pipeline([
+    ("imputer", SimpleImputer(strategy="most_frequent")),
+    ("onehot",  OneHotEncoder(handle_unknown="ignore"),
+])
+# Combine: apply each sub-pipeline to the right columns
+preprocessor = ColumnTransformer([
+    ("num", num_pipe, num_cols),
+    ("cat", cat_pipe, cat_cols),
+])
+What this pipeline does
+Numerical features
+impute median
+scale to mean = 0, std = 1
+Categorical features
+impute mode
+one-hot encode
+All fit operations happen inside the CV
+folds → no data leakage
+handle_unknown="ignore" protects
+against unseen categories in the test set.
+Notice that we have NOT actually transformed anything
+yet. The ColumnTransformer is just a blueprint — a recipe.
+The actual work happens later, when we call
+.fit_transform() or when we plug it into a cross-validation
+loop. And crucially, the recipe is re-applied freshly inside
+each CV fold, so we never compute the median or the
+scaling using validation data. That's how we get a
+leakage-free evaluation.
+53
+
+--- PAGE 54 ---
+Understanding the Key sklearn Functions
+StandardScaler() — rescales numerical features
+For each numerical column:  → after transformation, mean = 0, std = 1.
+GrLivArea Original Calculation Scaled
+Small house 1200 sqft (1200 − 2140) / 850 −1.1
+Average house 2140 sqft (2140 − 2140) / 850 0.0
+Big house 3500 sqft (3500 − 2140) / 850 +1.6
+Computed with mean ≈ 2140, std ≈ 850 (from the full column).
+→ Without scaling, Ridge/Lasso unfairly penalise large-scale features (LotArea in thousands vs OverallQual in 1–10). Scaling puts every feature
+on the same playing field.
+ 
+OneHotEncoder() — turns text categories into binary columns
+MasVnrType  (1 col) _Brick _Stone _None _BrkFace
+Brick 1 0 0 0
+Stone 0 1 0 0
+None 0 0 1 0
+BrkFace 0 0 0 1
+NewCategory  (never seen in training) 0 0 0 0
+→ handle_unknown="ignore" = safety net: if the test set contains a category we never saw during training, the encoder outputs zeros across all
+encoded columns instead of crashing. 54
+
+--- PAGE 55 ---
+Why Cross-Validation?
+The problem with a single train/test split
+Split 1458 houses 80/20 once → one single score, unreliable:
+Different random seed → different score
+And we "waste" 20% of our training data
+K-Fold CV — the robust alternative
+Split into 5 equal folds, then for each fold: train on the other 4, predict on this one.
+[ Val  | Train | Train | Train | Train ]  → score 1
+[ Train| Val   | Train | Train | Train ]  → score 2
+[ Train| Train | Val   | Train | Train ]  → score 3
+[ Train| Train | Train | Val   | Train ]  → score 4
+[ Train| Train | Train | Train | Val   ]  → score 5
+                                            ───────
+                                            mean ± std
+→ Robust score: mean ± std. The standard deviation tells us how much we can trust the mean.
+Why not just submit each model to Kaggle?
+Kaggle limits submissions per day (10)
+One submission = one number on a fixed test set → easy to overfit "the leaderboard"
+CV is fast, free, unlimited, and provides an uncertainty estimate
+ 
+CV is our internal scorecard. We compare models on CV → submit only the winner to Kaggle.
+55
+
+--- PAGE 56 ---
+Baseline LinearRegression — Cross-Validation Score
+# Wrap preprocessor + LinearRegression into a single pipeline (markdown)
+from sklearn.linear_model    import LinearRegression
+from sklearn.model_selection import cross_val_score
+pipeline = Pipeline([
+    ("preprocessor", preprocessor),
+    ("model",        LinearRegression()),
+])
+# 5-fold CV — RMSE on log(y) = RMSLE on real prices = Kaggle score (markdown)
+neg_mse     = cross_val_score(pipeline, X, y, cv=5, scoring="neg_mean_squared_error")
+rmse_scores = np.sqrt(-neg_mse)
+print(f"CV RMSLE = {rmse_scores.mean():.4f} ± {rmse_scores.std():.4f}")
+56
+
+--- PAGE 57 ---
+Baseline LinearRegression — Cross-Validation Score
+What we did
+Wrapped preprocessor + LinearRegression into one single pipeline → train, evaluate, predict with .fit() /
+.score() / .predict()
+cross_val_score with 5 folds → 5 different train/validation splits
+scoring="neg_mean_squared_error": sklearn convention is "higher = better", so MSE is negated. We flip the
+sign and take the square root to get RMSE
+Since y = log(SalePrice), RMSE on y is exactly Kaggle's RMSLE score
+Your first real ML score on this dataset. Now we'll try to beat it with Ridge and Lasso.
+57
+
+--- PAGE 58 ---
+Ridge + GridSearchCV — How It Works
+Ridge — quick reminder (from Block 4)
+Linear regression + L2 penalty on the coefficients:
+One hyperparameter: alpha controls the strength of the penalty
+High alpha → strong shrinkage → simpler model → left of the U-curve → high bias (underfit)
+Low alpha → close to OLS → complex model → right of the U-curve → high variance (overfit)
+Goal: find the α at the bottom of the U-curve (best bias-variance trade-off)
+GridSearchCV — automated hyperparameter search
+Instead of trying alpha values one by one by hand:
+1. Define a grid of candidate values, e.g. [0.01, 0.1, 1, 10, 30, 100]
+2. For each value → run K-fold CV → get a CV score (the mean of the K fold scores)
+3. Pick the value with the best CV score → that's our best_alpha
+4. (Bonus) GridSearchCV automatically refits the model on the full training set with the winning α
+→ Same recipe for any hyperparameter, on any model.
+58
+
+--- PAGE 59 ---
+Ridge — Tune α with GridSearchCV
+# Find the best Ridge alpha by 5-fold cross-validation (markdown)
+from sklearn.linear_model    import Ridge
+from sklearn.model_selection import GridSearchCV
+pipeline_ridge = Pipeline([
+    ("preprocessor", preprocessor),
+    ("model",        Ridge()),
+])
+param_grid = {"model__alpha": [0.01, 0.1, 1, 10, 30, 100]}
+#              ↑ step name + "__" + param name
+grid = GridSearchCV(
+    pipeline_ridge,
+    param_grid=param_grid,
+    cv=5,
+    scoring="neg_mean_squared_error",
+    n_jobs=-1,           # use all CPU cores
+)
+grid.fit(X, y)
+best_alpha = grid.best_params_["model__alpha"]
+best_rmsle = np.sqrt(-grid.best_score_)
+print(f"Best alpha = {best_alpha}  |  CV RMSLE = {best_rmsle:.4f}")
+59
+
+--- PAGE 60 ---
+What just happened
+GridSearchCV trained Ridge 6 × 5 = 30 times (6 alphas × 5 CV folds), then picked the best one
+The parameter name "model__alpha" reaches inside the Pipeline → the alpha of the step named "model"
+n_jobs=-1 parallelises across all CPU cores → much faster
+Ridge typically beats the baseline because regularisation tames the multicollinearity we saw in EDA
+Improvement over baseline: RMSLE drops from 0.127 to 0.115 → about 1.2 percentage points lower (because
+RMSLE ≈ typical relative price error) → relative price errors reduced by ~1.2 pp (from ~12.7% to ~11.5%).
+60
+
+--- PAGE 61 ---
+Lasso — Your Turn — Tune α with GridSearchCV
+Exercise
+Now apply the same workflow you just saw for Ridge, but with Lasso instead.
+Hints:
+Only the import changes:
+from sklearn.linear_model import Lasso
+Everything else stays the same:
+Same preprocessor
+Same GridSearchCV structure
+Same "neg_mean_squared_error" scoring
+Important — Lasso is more sensitive to alpha than Ridge → try much smaller values:
+  param_grid = {"model__alpha": [0.0001, 0.001, 0.01, 0.1, 1]}
+Lasso uses an iterative solver (coordinate descent) → add Lasso(max_iter=10000) to avoid convergence warnings
+Before you run
+ Take a guess — do you think Lasso will beat Ridge on this dataset?
+Hint: after one-hot encoding, we have ~270 features with significant multicollinearity.
+Lasso does automatic feature selection — it pushes useless coefficients exactly to 0.
+With that many features and that much redundancy, will it help or hurt? 61
+
+--- PAGE 62 ---
+Lasso — Solution
+# Find the best Lasso alpha by 5-fold cross-validation (markdown)
+from sklearn.linear_model import Lasso
+pipeline_lasso = Pipeline([
+    ("preprocessor", preprocessor),
+    ("model",        Lasso(max_iter=10000)),   # iterative solver needs more iters
+])
+param_grid = {"model__alpha": [0.0001, 0.001, 0.01, 0.1, 1]}
+grid_lasso = GridSearchCV(
+    pipeline_lasso,
+    param_grid=param_grid,
+    cv=5,
+    scoring="neg_mean_squared_error",
+    n_jobs=-1,
+)
+grid_lasso.fit(X, y)
+best_alpha = grid_lasso.best_params_["model__alpha"]
+best_rmsle = np.sqrt(-grid_lasso.best_score_)
+print(f"Best alpha = {best_alpha}  |  CV RMSLE = {best_rmsle:.4f}")
+62
+
+--- PAGE 63 ---
+Lasso — Solution
+What we observe
+Best alpha ≈ 0.001 — much smaller than Ridge (~10–30) because L1 and L2 penalties scale differently
+CV RMSLE ≈ 0.1130 — slightly better than Ridge (0.1153), much better than baseline (0.1270)
+Lasso automatically zeroed out about half of the ~270 features → feature selection at work
+Check yourself:
+  model = grid_lasso.best_estimator_.named_steps["model"]
+  print(f"{(model.coef_ == 0).sum()} of {len(model.coef_)} coefficients pushed to 0")
+Lasso = Ridge + automatic feature selection. On a dataset with ~270 features and heavy multicollinearity, that
+capability shines.
+63
+
+--- PAGE 64 ---
+ElasticNet — Your Turn — Tune α and l1_ratio
+Exercise
+Apply the same workflow to ElasticNet — this time with 2 hyperparameters to tune.
+Hints
+New import: from sklearn.linear_model import ElasticNet
+ElasticNet also uses coordinate descent → add max_iter=10000
+2D grid this time (a list of values for each hyperparameter):
+  param_grid = {
+      "model__alpha":    [0.0001, 0.001, 0.01, 0.1],
+      "model__l1_ratio": [0.1, 0.3, 0.5, 0.7, 0.9],
+  }
+GridSearchCV will try all combinations → 4 × 5 = 20 pairs, each with 5 CV folds = 100 trainings
+Before you run
+ Take a guess — what l1_ratio will win?
+Closer to 0 (pure Ridge) or closer to 1 (pure Lasso) on this dataset?
+64
+
+--- PAGE 65 ---
+ElasticNet — Solution
+from sklearn.linear_model import ElasticNet
+pipeline_enet = Pipeline([
+    ("preprocessor", preprocessor),
+    ("model",        ElasticNet(max_iter=10000)),
+])
+param_grid = {
+    "model__alpha":    [0.0001, 0.001, 0.01, 0.1],
+    "model__l1_ratio": [0.1, 0.3, 0.5, 0.7, 0.9],
+}
+grid_enet = GridSearchCV(
+    pipeline_enet,
+    param_grid=param_grid,
+    cv=5,
+    scoring="neg_mean_squared_error",
+    n_jobs=-1,
+)
+grid_enet.fit(X, y)
+best_alpha    = grid_enet.best_params_["model__alpha"]
+best_l1_ratio = grid_enet.best_params_["model__l1_ratio"]
+best_rmsle    = np.sqrt(-grid_enet.best_score_)
+print(f"Best alpha    = {best_alpha}")
+print(f"Best l1_ratio = {best_l1_ratio}")
+print(f"CV RMSLE      = {best_rmsle:.4f}")
+# Expected: alpha ≈ 0.001, l1_ratio ≈ 0.7–0.9, RMSLE ≈ 0.112
+65
+
+--- PAGE 66 ---
+ElasticNet — Solution
+What we observe
+Best l1_ratio ≈ 0.5 → perfectly balanced mix between L1 and L2 — both penalties contribute equally
+CV RMSLE ≈ 0.112 → slightly better than pure Lasso (0.113) and pure Ridge (0.115)
+ElasticNet kept the best of both: feature selection (L1 part) and shrinkage on correlated features (L2 part) — both at
+50% strength
+GridSearchCV ran 100 trainings (20 pairs × 5 folds) → visibly slower than Ridge/Lasso
+Balanced mix wins. Each penalty was useful — but neither alone was the right answer.
+66
+
+--- PAGE 67 ---
+Comparing the Four Linear Models
+CV RMSLE on the same 5-fold split
+Model CV RMSLE Improvement vs baseline
+LinearRegression (baseline) 0.1270 —
+Ridge (best α ≈ 10–30) 0.1153 −9.2%
+Lasso (best α ≈ 0.001) 0.1129 −11.1%
+ElasticNet (α=0.001, l1_ratio=0.5) 0.1121 −11.7% 
+What this tells us
+All three regularised models beat plain OLS → the multicollinearity we found in EDA was indeed hurting
+Lasso edges out Ridge → feature selection helps slightly more than pure shrinkage on this dataset
+ElasticNet wins with a perfectly balanced mix (l1_ratio = 0.5) → both penalties were useful, but neither alone
+was best
+All four models share the same preprocessing pipeline → the comparison is fair
+ Winner: ElasticNet. Let's submit it to Kaggle. 67
+
+--- PAGE 68 ---
+Generate Predictions and Submit to Kaggle
+# Build the submission file using our best model — ElasticNet (markdown)
+# 1. Best model is already retrained on the FULL training set (refit=True)
+best_model = grid_enet.best_estimator_
+# 2. Predict on the test set → predictions are in log-space
+test_X    = test.drop(columns=["Id"])
+log_preds = best_model.predict(test_X)
+# 3. Convert back from log-space → dollar prices
+predicted_prices = np.exp(log_preds)
+# 4. Kaggle requires exactly two columns: "Id" and "SalePrice"
+submission = pd.DataFrame({
+    "Id":        test["Id"],
+    "SalePrice": predicted_prices,
+})
+# 5. Save without the pandas index column!
+submission.to_csv("submission.csv", index=False)
+print(submission.head())
+Submit your predictions
+1. Open the Kaggle competition page
+2. Click "Submit Predictions" (top right)
+3. Drag your submission.csv file
+4. Wait ~30 seconds for evaluation
+5. See your public score on the leaderboard 
+Expect your public score around 0.13–0.14 (CV is always slightly optimistic, by ~0.01–0.03). What matters is the trend — every improvement you
+make in CV will also show up on the public leaderboard. 68
+
+--- PAGE 69 ---
+69
+
+--- PAGE 70 ---
+End of Session 1 — Recap & What's Next
+ What we accomplished today
+Explored the full dataset (EDA): skewness, missing values, correlations, outliers
+Built a clean reusable sklearn pipeline (preprocessing + model)
+Trained 4 linear models with cross-validation: OLS, Ridge, Lasso, ElasticNet
+First Kaggle submission with a public score around 0.13 
+ Your group's technical differentiator
+The personal extension is what will set your startup apart from competitors. Think of it as your product's secret sauce — the reason a
+customer will choose YOU.
+Some directions to brainstorm:
+Finer hyperparameter grids — try np.logspace(-4, 1, 50) instead of 5 hand-picked values
+Feature engineering (TotalSF, HouseAge, BathRatio...)
+Log-transform skewed numerical features (not just the target)
+Smarter outlier detection (IsolationForest)
+ Coming up in Session 2
+Tree-based gradient boosting — Random Forest, XGBoost, LightGBM, CatBoost.
+Expected drop in score: another ~0.01–0.02 below your current ElasticNet submission. 70
+
+--- PAGE 71 ---
+Session 2
+Tree-based models
+3 hours
+71
+
+--- PAGE 72 ---
+Session 2 — Detailed Plan
+Block Type Content
+1 Course Decision trees → bagging → boosting · XGBoost / LightGBM / CatBoost
+2 Lab Random Forest baseline · feature importance · GridSearchCV · XGBoost with early stopping
+3 Lab XGBoost + Target Encoding · LightGBM (speed) · CatBoost (native categoricals) ·
+comparison table
+4 Wrap-
+up Which model to choose and why
+72
+
+--- PAGE 73 ---
+A Note on Theoretical Depth
+For each model family, we cover:
+ Intuition — what the model does, why it works
+ Practice — code, hyperparameters, evaluation, real Kaggle submission
+ Deep theory — left as personal study after the course
+What we won't have time to derive properly
+We focus on intuition and code, not on the mathematical derivations behind each model:
+Linear models (Session 1) — OLS estimator derivation, Ridge/Lasso optimality conditions
+Tree models (Session 2) — information gain, Gini vs entropy, gradient boosting convergence
+SVM (Session 3) — kernel trick mathematics, dual formulation
+Neural networks (Session 3) — backpropagation derivation, Adam optimizer internals
+ We provide the preliminary foundation and hands-on sklearn practice. Theoretical depth is yours to build.
+Recommended companion: Hands-On ML with Scikit-Learn, Keras and TensorFlow — Aurélien Géron (3rd edition,
+O'Reilly).
+73
+
+--- PAGE 74 ---
+Block 1 (Course) — Why Tree-Based Models?
+For tabular problems like House Prices, tree-based gradient boosting is the gold standard.
+Key strengths
+Handles mixed types (numerical + categorical) natively
+Captures non-linear relationships and feature interactions automatically
+Robust to outliers and skewed distributions → no need for log/scaling
+Often beats linear models by a wide margin on tabular data
+Wins most Kaggle tabular competitions
+Today's roadmap — we build up step by step
+1. Decision tree — the basic building block
+2. Random Forest — bagging many decorrelated trees
+3. Gradient Boosting → XGBoost · LightGBM · CatBoost — the heavyweights of Kaggle
+Expected leaderboard improvement: drop your score from ~0.134x (linear) to ~0.12x (Random Forest) and possibly
+~0.11x (boosting).
+74
+
+--- PAGE 75 ---
+Decision Tree — How It Works
+A decision tree is a flowchart of yes/no questions that progressively narrows down the prediction.
+A toy tree on House Prices
+                GrLivArea > 1500?
+                  /         \
+                Yes          No
+                /             \
+       OverallQual > 7?    avg = $145k
+         /        \
+       Yes         No
+        /           \
+   avg = $290k   avg = $190k
+Each leaf stores the average SalePrice of all training houses that fell into it.
+Prediction
+For a new house: follow the questions top-down → reach a leaf → return its average.
+→ Example: GrLivArea = 2000, OverallQual = 8 → right, then right → predicted $290k.
+How the tree picks its splits
+At each node, the algorithm tries every feature and every threshold, and picks the split that most reduces the variance of the target
+inside the two child nodes (creates the most homogeneous groups, each child group contains prices more similar to each other than
+in the parent group).
+A single tree is fast and interpretable, but easily overfits if grown too deep. → Solution: combine many trees.
+75
+
+--- PAGE 76 ---
+Random Forest — Bagging Many Decorrelated Trees
+A single deep tree overfits. The fix: train many trees and average their predictions.
+Bagging — "Bootstrap Aggregating"
+Two sources of randomness make each tree slightly different:
+1. Random rows (bootstrap sample drawn with replacement) → each tree sees a different subset of houses
+2. Random features at each split → no tree can always rely on the same dominant feature (e.g., OverallQual)
+Prediction
+Each tree votes → final prediction = average of all tree predictions.
+   new house  →  tree 1   predicts $245k
+                 tree 2   predicts $260k      → average = $251k
+                 tree 3   predicts $248k         ↑
+                 ...                              final
+                 tree 100 predicts $251k         prediction
+Why it works
+Individual trees are high-variance (each overfits its bootstrap sample)
+But the trees overfit in different directions → averaging cancels out the random errors
+Same low bias as individual trees, but much lower variance → better generalisation
+Same intuitive trees + a clever combination = no overfit. The first form of ensemble learning.
+76
+
+--- PAGE 77 ---
+Why Averaging Reduces Variance — A Closer Look
+Which variance? — The bias-variance decomposition
+For a fixed input , the total prediction error at that point decomposes into three terms:
+The variance we want to reduce = dispersion of individual predictions around their own mean, not around the true value.
+Concrete example — house actually sold at $210k
+Tree Prediction
+1 $215k
+2 $180k
+3 $230k
+... ...
+100 $205k
+Average 
+Note: variance is computed around  (the mean prediction), not around the true value $210k. The $10k gap between mean and truth = the bias.
+→ The standard deviation (√variance) is ≈ $30k around the mean — that's how much individual tree predictions deviate from each other.
+→ Each individual tree's prediction sits at roughly ±$30k around the mean (not around the truth!).
+What averaging does
+→ If we re-ran 100 different forests, their averaged predictions would only vary by ±$3k — 10× more stable than any individual tree.
+The forest's bias is the same as a single tree. Its variance is 100× smaller. That's the whole point of Random Forest. 77
+
+--- PAGE 78 ---
+XGBoost · LightGBM · CatBoost — The Three Heavyweights
+All three implement gradient boosting but each adds its own innovations.
+XGBoost LightGBM CatBoost
+Released 2014 — DMLC  (Tianqi Chen, U. Washington) 2017 — Microsoft 2017 — Yandex 
+Tree growth Level-wise (balanced) Leaf-wise (deeper where useful) Symmetric (oblivious)
+Speed Fast Fastest on large data Slower training, fast prediction
+Categorical handling None (manual encoding required) Encoding interne (label encoding spécial) Native (out of the box)
+Overfitting risk Medium High (leaf-wise) Low (symmetric + ordered boosting)
+Best when… Default choice, well-rounded Big datasets, speed matters Many categoricals, less tuning
+GPU support
+Today we'll try all three on House Prices
+ No universal winner. House Prices has 43 categorical features → CatBoost might surprise us.
+78
+
+--- PAGE 79 ---
+How They Differ — A Closer Look
+ Tree growth strategies
+Level-wise (XGBoost) — fills the tree one full level at a time, all leaves at the same depth. Balanced, slower to converge, less overfit.
+Leaf-wise (LightGBM) — at each step, splits the leaf with the highest loss reduction, regardless of its depth. Faster convergence, but trees
+become asymmetric and overfit more easily.
+Symmetric / Oblivious (CatBoost) — at each level, all nodes use the same split feature and threshold. Very restrictive structure → built-in
+regularisation + extremely fast prediction.
+ Categorical handling — what each really does
+XGBoost: does NOT one-hot encode for you. You must encode categoricals manually (one-hot or label or target encoding) before passing the
+data.
+LightGBM: has a categorical_feature parameter — handles encoding internally, but less robust than CatBoost.
+CatBoost: pass categorical columns as-is via cat_features=[...]. No manual encoding needed. Internally uses ordered target encoding.
+ Ordered boosting (CatBoost specific)
+Standard target encoding leaks information about the target into the features. CatBoost prevents this: at training step , the target encoding for
+sample  is computed only from samples that come before  in a random ordering — never including 's own target. → No data leakage during
+training.
+79
+
+--- PAGE 80 ---
+Target Encoding & CatBoost's Solution to Data Leakage
+ What is target encoding?
+Replace each category by the mean of the target for rows in that category — turns text into a meaningful number, no one-hot explosion.
+Row Neighborhood SalePrice
+1 OldTown $140k
+2 OldTown $160k
+3 OldTown $155k
+4 OldTown $130k
+→ mean("OldTown")  = (140 + 160 + 155 + 130) / 4 = $146.25k → every "OldTown" row becomes 146.25
+ The data leakage problem
+When encoding row 3, row 3's own target ($155k) is included in the mean. The feature now "knows" the target → the model cheats during training → overfits badly on test.
+ CatBoost's solution — Ordered Target Encoding
+Random permutation of rows. For each row, the encoding uses only the rows that come before it:
+Row Rows used to compute encoding Encoding
+1 (none — first in order) global prior
+2 row 1 140
+3 rows 1, 2 (140 + 160) / 2 = 150
+4 rows 1, 2, 3 (140 + 160 + 155) / 3 = 151.7
+→ Row 3's own target ($155) is never used to encode row 3. No leakage by construction.
+CatBoost uses a different random permutation for each boosting round → no single ordering biases the model. All this happens invisibly when you set cat_features .
+80
+
+--- PAGE 81 ---
+Block 2 (Lab) — Random Forest Baseline
+# Build a tree-friendly preprocessor — same as Session 1 minus StandardScaler (markdown)
+num_pipe_tree = Pipeline([
+    ("imputer", SimpleImputer(strategy="median")),
+])  # no scaler — RF is scale-invariant
+tree_preprocessor = ColumnTransformer([
+    ("num", num_pipe_tree, num_cols),
+    ("cat", cat_pipe,      cat_cols),   # cat_pipe unchanged from Session 1
+])
+# Train and evaluate the Random Forest baseline (markdown)
+from sklearn.ensemble        import RandomForestRegressor
+from sklearn.model_selection import cross_val_score
+pipeline_rf = Pipeline([
+    ("preprocessor", tree_preprocessor),
+    ("model",        RandomForestRegressor(
+        n_estimators=300,
+        random_state=42,
+        n_jobs=-1,
+    )),
+])
+neg_mse     = cross_val_score(pipeline_rf, X, y, cv=5, scoring="neg_mean_squared_error")
+rmse_scores = np.sqrt(-neg_mse)
+print(f"RF baseline CV RMSLE = {rmse_scores.mean():.4f} ± {rmse_scores.std():.4f}")
+# Expected ~ 0.140 ± 0.01
+81
+
+--- PAGE 82 ---
+Block 2 (Lab) — Random Forest Baseline
+What changed compared to Session 1
+New tree_preprocessor — same as before minus StandardScaler → trees are scale-invariant, so scaling is
+pointless. Adapt preprocessing to your model.
+OneHotEncoder is kept — sklearn still requires numeric inputs
+n_estimators=300 trees, n_jobs=-1 for parallel training
+No hyperparameter tuning yet — next slide
+ RF baseline CV RMSLE = 0.1382 ± 0.0046 — worse than tuned ElasticNet (0.112)! Tree models need tuning to
+shine.
+82
+
+--- PAGE 83 ---
+Random Forest — Tuning with GridSearchCV
+# Tune Random Forest hyperparameters with 5-fold CV (markdown)
+from sklearn.model_selection import GridSearchCV
+param_grid = {
+    "model__max_depth":        [None, 10, 20, 30],
+    "model__min_samples_leaf": [1, 2, 5],
+}
+grid_rf = GridSearchCV(
+    pipeline_rf,                        # reuses the tree_preprocessor + RF
+    param_grid=param_grid,
+    cv=5,
+    scoring="neg_mean_squared_error",
+    n_jobs=-1,  
+)
+grid_rf.fit(X, y)
+print(f"Best params = {grid_rf.best_params_}")
+print(f"CV RMSLE    = {np.sqrt(-grid_rf.best_score_):.4f}")
+# Expected: max_depth ≈ 20–30, min_samples_leaf ≈ 1, RMSLE ≈ 0.135
+Hyperparameters being tuned
+max_depth  — maximum depth of each tree
+None  = grow until each leaf is "pure" (max overfit)
+Lower → simpler trees, less overfit
+min_samples_leaf  — minimum number of samples in any leaf
+1  = trees can have leaves with one sample (max overfit)
+Higher → smoother predictions, less overfit
+Result
+GridSearchCV  runs 4 × 3 = 12 combinations × 5 folds = 60 trainings
+CV RMSLE drops to ~0.1377 → better than baseline RF, but still behind ElasticNet (0.112)
+Random Forest rarely beats a well-tuned linear model on this dataset — after log(SalePrice)  and one-hot encoding, the data is mostly additive and near-linear → linear
+models with regularisation already capture it efficiently
+Time for the heavyweights — next: XGBoost with early stopping. 83
+
+--- PAGE 84 ---
+Feature Importance — What Drives the Predictions?
+# Extract feature importances from the tuned Random Forest (markdown)
+import matplotlib.pyplot as plt
+# 1. Get the trained RF and the feature names after preprocessing
+best_rf       = grid_rf.best_estimator_.named_steps["model"]
+preprocessor_ = grid_rf.best_estimator_.named_steps["preprocessor"]
+feature_names = preprocessor_.get_feature_names_out()
+# 2. Build a DataFrame of importances, sorted
+importances = pd.DataFrame({
+    "feature":    feature_names,
+    "importance": best_rf.feature_importances_,
+}).sort_values("importance", ascending=False)
+# 3. Plot the top 15
+top15 = importances.head(15)
+plt.figure(figsize=(8, 5))
+plt.barh(top15["feature"][::-1], top15["importance"][::-1])
+plt.title("Top 15 features — Random Forest")
+plt.xlabel("Mean decrease in variance (importance)")
+plt.tight_layout()
+plt.show()
+What you should see
+OverallQual  dominates (~30–40% of total importance) — confirms our EDA correlations
+GrLivArea , TotalBsmtSF , GarageCars  close behind — the "big four" predictors of house prices
+The rest is split among many features, each contributing a small amount but collectively meaningful
+How feature_importances_ is computed
+For each feature, sklearn measures how much it reduces the variance of the target across all splits where it was used, averaged over all trees in the forest. Higher =
+more important. Formula: sum of variance decreases within each tree by feature, then mean across trees — frequency of use is already accounted for.
+ Caveat: feature_importances_  is biased toward high-cardinality features (continuous variables get favored over one-hot binary columns). For a fairer
+ranking, use permutation_importance  from sklearn.inspection . 84
+
+--- PAGE 85 ---
+Target Encoding — Implementation with sklearn
+We covered the concept on the CatBoost slide. Now we apply target encoding to replace one-hot in our pipeline.
+sklearn's TargetEncoder (available since sklearn 1.3, late 2023)
+# Replace OneHotEncoder by TargetEncoder for tree models (markdown)
+from sklearn.preprocessing import TargetEncoder
+# Categorical sub-pipeline — impute missing + target encode (no one-hot!)
+cat_pipe_te = Pipeline([
+    ("imputer", SimpleImputer(strategy="most_frequent")),
+    ("target",  TargetEncoder(smooth="auto", random_state=42, cv=5)),
+])
+# Combined preprocessor for tree models with target encoding
+tree_preprocessor_te = ColumnTransformer([
+    ("num", num_pipe_tree, num_cols),    # same as before — median imputer, no scaler
+    ("cat", cat_pipe_te,   cat_cols),    # NEW: target encoding instead of one-hot
+])
+What TargetEncoder does (anti-leakage built in)
+Each category → a single numeric value = mean of the target across rows with that category
+Internal 5-fold cross-fitting (cv=5 ) → for each fold, encoding is computed from the OTHER 4 folds → no leakage during training
+Same idea as CatBoost's ordered TE — slightly different mechanism, same anti-leakage goal
+smooth="auto"  → Empirical Bayes shrinkage: rare categories are pulled toward the global mean (acts as the "prior")
+Impact on data shape
+One-Hot Encoder (Session 1) Target Encoder (now)
+Total columns after preprocessing ~270 79
+Categorical "Neighborhood" (25 values) 25 binary columns 1 numeric column
+All three boosters (XGBoost, LightGBM, CatBoost) will now use tree_preprocessor_te  → cleaner, more compact inputs.
+85
+
+--- PAGE 86 ---
+XGBoost + Target Encoding + GridSearchCV
+# XGBoost with target encoding + hyperparameter search (markdown)
+from xgboost                 import XGBRegressor
+from sklearn.model_selection import GridSearchCV
+pipeline_xgb = Pipeline([
+    ("preprocessor", tree_preprocessor_te),       # ← target encoder
+    ("model",        XGBRegressor(
+        random_state=42,
+        n_jobs=1,                                 # let GridSearchCV parallelize
+        eval_metric="rmse",
+    )),
+])
+param_grid = {
+    "model__n_estimators":  [500, 1000, 1500],
+    "model__learning_rate": [0.03, 0.05, 0.1],
+    "model__max_depth":     [3, 5, 7],
+}
+grid_xgb = GridSearchCV(
+    pipeline_xgb,
+    param_grid=param_grid,
+    cv=5,
+    scoring="neg_mean_squared_error",
+    n_jobs=-1,
+)
+grid_xgb.fit(X, y)
+print(f"Best params = {grid_xgb.best_params_}")
+print(f"CV RMSLE    = {np.sqrt(-grid_xgb.best_score_):.4f}")
+# Result: CV RMSLE ≈ 0.120 — big improvement over RF (0.135), still behind ElasticNet (0.112)
+# Possible refinement (finer grid near the minima):
+# "model__n_estimators":  [200, 300, 500]
+# "model__max_depth":     [2, 3, 4]
+86
+
+--- PAGE 87 ---
+XGBoost + Target Encoding + GridSearchCV
+Key choices in this run
+Target Encoding instead of One-Hot → 79 columns vs 270 → faster training, more concentrated signal
+Real hyperparameter search → 3 × 3 × 3 = 27 combos × 5 folds = 135 trainings (~3–5 min)
+n_estimators is tuned via the grid — in production, you'd combine GridSearchCV with early stopping to find this automatically, but that's
+incompatible with sklearn Pipelines
+Best params typically: n_estimators=500, learning_rate=0.05, max_depth=3
+ Result: CV RMSLE = 0.1199 — significant improvement over Random Forest (0.135), still slightly behind ElasticNet (0.112). Best params favor
+shallow trees and few estimators → confirms the near-linear structure of the data.
+Why XGBoost doesn't fully beat ElasticNet on this dataset
+After log(SalePrice) + target encoding, the data is mostly additive and near-linear in the 79 cleaner features → ElasticNet's L1+L2 already
+captures it well. Boosting needs strong non-linearities to leapfrog.
+Next: LightGBM — with native categorical handling, leaf-wise growth, and the fastest training of the three boosters.
+87
+
+--- PAGE 88 ---
+LightGBM with Native Categorical Handling + GridSearchCV
+# LightGBM uses label encoding + native categorical_feature parameter (markdown)from lightgbm                import LGBMRegressorfrom sklearn.preprocessing   import OrdinalEncoderfrom sklearn.model_selection import GridSearchCV
+# Label-encoding sub-pipeline (turns "OldTown" into an integer code)cat_pipe_label = Pipeline([    ("imputer", SimpleImputer(strategy="most_frequent")),    ("encode",  OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)),])
+tree_preprocessor_label = ColumnTransformer([    ("num", num_pipe_tree,  num_cols),    ("cat", cat_pipe_label, cat_cols),])
+# After preprocessing, categorical columns end up at these indices:cat_idx = list(range(len(num_cols), len(num_cols) + len(cat_cols)))
+pipeline_lgbm = Pipeline([    ("preprocessor", tree_preprocessor_label),    ("model",        LGBMRegressor(random_state=42, n_jobs=1, verbose=-1)),])
+param_grid = {    "model__n_estimators":  [500, 1000, 1500],    "model__learning_rate": [0.03, 0.05, 0.1],    "model__num_leaves":    [15, 31, 63],}
+grid_lgbm = GridSearchCV(    pipeline_lgbm, param_grid=param_grid, cv=5,    scoring="neg_mean_squared_error", n_jobs=-1,)
+# Pass categorical indices to LightGBM's fit() via fit_paramsgrid_lgbm.fit(X, y, model__categorical_feature=cat_idx)
+print(f"Best params = {grid_lgbm.best_params_}")print(f"CV RMSLE    = {np.sqrt(-grid_lgbm.best_score_):.4f}")# Result: CV RMSLE ≈ 0.1218 — slightly worse than XGBoost (0.1199) on this small linear dataset
+88
+
+--- PAGE 89 ---
+LightGBM with Native Categorical Handling + GridSearchCV
+What's different from XGBoost
+Label encoding instead of target encoding → "OldTown" becomes integer 12, kept as ONE column
+model__categorical_feature=cat_idx in fit() → tells LightGBM which columns are categorical → it uses its internal gradient-based
+optimal grouping at each split
+num_leaves replaces max_depth as the main tree-shape hyperparameter (leaf-wise growth needs this)
+Speed: LightGBM is typically the fastest of the three boosters (~2 min for the full GridSearch)
+Why native handling helps
+For a categorical with  levels, LightGBM finds the optimal binary partition in  at each split — sort categories by their gradient
+statistics, then find the best cut. No one-hot explosion, no target encoding shenanigans. Especially powerful for high-cardinality columns like
+Neighborhood (25 values).
+ Result: CV RMSLE = 0.1218 — slightly worse than XGBoost (0.1199). On a small, mostly-linear dataset, LightGBM's aggressive leaf-wise
+growth offers no advantage. Real win expected with CatBoost.
+Why we pass cat_idx and not column names
+After ColumnTransformer.fit_transform(), the output is a NumPy array — column names are lost. LightGBM works on indices: the first
+len(num_cols) columns are numerical, the rest are categoricals. We build the index list manually and pass it via fit_params (the model__
+prefix routes it to the model step).
+89
+
+--- PAGE 90 ---
+CatBoost with Native Categorical Handling + GridSearchCV
+# CatBoost handles categoricals AND missing values natively — NO preprocessor needed! (markdown)
+# CatBoost handles numerical NaN natively, but categorical NaN must be converted to string (markdown)
+from catboost                import CatBoostRegressor
+from sklearn.model_selection import GridSearchCV
+# Convert categorical NaN to "missing" string (one-line fix)
+X_cb = X.copy()
+X_cb[cat_cols] = X_cb[cat_cols].fillna("missing")
+cat_indices = [X_cb.columns.get_loc(c) for c in cat_cols]
+cb = CatBoostRegressor(
+    cat_features=cat_indices,
+    random_state=42,
+    verbose=0,
+    thread_count=1,
+    allow_writing_files=False,   # avoid Windows write permission issue
+)
+param_grid = {
+    "iterations":    [500, 1000, 1500],
+    "learning_rate": [0.03, 0.05, 0.1],
+    "depth":         [4, 6, 8],
+}
+grid_cb = GridSearchCV(
+    cb, param_grid=param_grid, cv=5,
+    scoring="neg_mean_squared_error", n_jobs=-1,
+    verbose=2,            # ← affiche progression
+)
+grid_cb.fit(X_cb, y)              # ← use X_cb (with cat NaN filled)
+print(f"Best params = {grid_cb.best_params_}")
+print(f"CV RMSLE    = {np.sqrt(-grid_cb.best_score_):.4f}")
+# Expected: ~0.112 — first model to challenge ElasticNet
+90
+
+--- PAGE 91 ---
+CatBoost with Native Categorical Handling + GridSearchCV
+What's radically different from XGBoost and LightGBM
+No preprocessor at all — X (the raw DataFrame) goes directly into CatBoost
+CatBoost handles numerical missing values natively → no SimpleImputer for numericals
+Categorical missing values must be converted to a string (one-liner: fillna("missing")) → CatBoost requires strings or integers for
+categoricals
+CatBoost handles categoricals natively with ordered target encoding → no OrdinalEncoder, no TargetEncoder
+Just specify cat_features=cat_indices in the constructor → done
+CatBoost-specific hyperparameters
+iterations — number of trees (same role as n_estimators in XGBoost/LGBM)
+depth — depth of trees. CatBoost uses symmetric/oblivious trees, so depth = uniform levels with the same split per level
+learning_rate — same role as elsewhere
+Why CatBoost should win on this dataset
+43 categorical features including some high-cardinality (e.g., Neighborhood with 25 values) → CatBoost's native ordered TE shines
+Ordered target encoding = no leakage during training → cleaner signal
+Symmetric trees = strong built-in regularisation → less overfit on a medium-sized dataset (1458 rows)
+Trade-off — slower training
+CatBoost is the slowest of the three boosters. Expect ~8–12 min for the full GridSearch (27 combos × 5 folds = 135 trainings).
+ Expected: ~0.112 CV RMSLE → may finally match or beat ElasticNet (0.1121). First booster to seriously challenge our champion!
+91
+
+--- PAGE 92 ---
+Session 2 — Five Models, Side by Side
+CV RMSLE on the same 5-fold split
+Model CV RMSLE vs ElasticNet Approach
+ElasticNet  (Session 1) 0.1121 — Regularised linear (L1+L2)
+RandomForest  (tuned) ~0.1377 +20% Bagging, level-wise trees
+XGBoost  + TE (tuned) 0.1199 +7% Boosting, level-wise
+LightGBM  (tuned, native cat) 0.1218 +9% Boosting, leaf-wise
+CatBoost  (tuned, native cat + ordered TE) 0.1156 +3.1% Boosting, symmetric trees
+Key insights
+All tree models trail ElasticNet until CatBoost — the dataset is mostly linear after log(SalePrice) + target encoding
+Tree complexity is minimal in best params (shallow, few estimators) — confirms the near-linear structure
+CatBoost comes the closest to ElasticNet (gap of only 0.0035) — its ordered target encoding for the 43 categoricals lets it close most of the gap,
+but the dataset's near-linear nature still favours the regularised linear model
+LightGBM didn't win — its aggressive leaf-wise growth has no edge on a small linear dataset
+What this means for your startup
+The most accurate model isn't always the "fanciest" — ElasticNet is competitive with state-of-the-art boosting on this kind of dataset. The real win
+comes from preprocessing decisions (target encoding, log-transform) more than from the model itself.
+Next: submit our best model (CatBoost OR a simple average of ElasticNet + CatBoost) to Kaggle.
+92
+
+--- PAGE 93 ---
+Submit to Kaggle — Two New Submissions
+# Generate 2 new submissions: CatBoost, and the CatBoost + ElasticNet average (markdown)
+test_X = test.drop(columns=["Id"])
+# --- We need both models' predictions, in log space ---------------------
+# ElasticNet (Session 1 champion — already on public leaderboard at 0.1346)
+log_pred_enet = grid_enet.predict(test_X)
+# CatBoost (NaN→string fix on test set, same as training)
+test_X_cb = test_X.copy()
+test_X_cb[cat_cols] = test_X_cb[cat_cols].fillna("missing")
+log_pred_cb = grid_cb.predict(test_X_cb)
+# --- Submission 1: CatBoost alone ----------------------------------------
+submission_cb = pd.DataFrame({"Id": test["Id"], "SalePrice": np.exp(log_pred_cb)})
+submission_cb.to_csv("submission_catboost.csv", index=False)
+# --- Submission 2: simple average — teaser for Session 3 ensemble --------
+log_pred_avg   = (log_pred_enet + log_pred_cb) / 2
+submission_avg = pd.DataFrame({"Id": test["Id"], "SalePrice": np.exp(log_pred_avg)})
+submission_avg.to_csv("submission_avg.csv", index=False)
+print("Two new submission files saved — ElasticNet (Session 1) is already on the leaderboard.")
+93
+
+--- PAGE 94 ---
+Actual public leaderboard results
+Submission CV RMSLE Public score
+ElasticNet 0.1121 0.13456
+CatBoost 0.1156 0.12361 
+Average est. ~0.110 0.12475
+Two lessons learned 
+1. CV ≠ Public → CatBoost surprised us by beating ElasticNet on public even though CV said the opposite. Always
+trust the leaderboard for the final ranking.
+2. Equal-weight averaging is naive → when one model is much better, averaging dilutes the winner. Session 3 will fix
+this with weighted blending and stacking.
+ Real teaser for Session 3: with proper weighted blending, expect public scores below 0.120.
+94
+
+--- PAGE 95 ---
+End of Session 2 — Recap & What's Next
+ What we accomplished today
+Theory: decision trees → bagging → boosting (XGBoost / LightGBM / CatBoost)
+Built 4 tree-based models with cross-validation:
+Random Forest (tuned): 0.1377
+XGBoost + Target Encoding: 0.1199
+LightGBM (native cat): 0.1218
+CatBoost (ordered TE): 0.1156  — best booster
+Two new Kaggle submissions:
+CatBoost solo → public 0.12361  (beat ElasticNet!)
+Average ensemble → public 0.12475
+Discovered two key lessons: CV ≠ Public & naive averaging dilutes the winner
+95
+
+--- PAGE 96 ---
+ Your group's technical differentiator — keep iterating
+Time to make your model unique for your startup :
+Optuna for smarter hyperparameter search than GridSearchCV
+Feature engineering (TotalSF, HouseAge, BathRatio, polynomial interactions...)
+Stacking with different base models — pick which combinations matter to your team (e.g., Lasso + XGBoost +
+KNN, or any other mix)
+SHAP analysis to explain why your model predicts what it does → a strong differentiator for your project
+ Coming up in Session 3
+SVM · Neural Networks (MLP) · Proper Ensemble Learning (weighted blending + stacking with StackingRegressor) ·
+SHAP for interpretability
+→ Goal: drop your public score below 0.120 with weighted ensembling.
+96

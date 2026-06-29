@@ -1,0 +1,9 @@
+{
+  "blend_weight_linear": 0.1,
+  "cv_rmsle_linear": 0.14687168502678338,
+  "cv_rmsle_catboost": 0.12703100747680418,
+  "cv_rmsle_blend": 0.1268259666848501,
+  "cv_folds": 5,
+  "n_numeric_features": 36,
+  "n_categorical_features": 43
+}

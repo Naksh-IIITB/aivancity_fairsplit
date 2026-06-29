@@ -1,0 +1,16 @@
+{
+  "GrLivArea": 1850,
+  "LotArea": 9200,
+  "OverallQual": 7,
+  "OverallCond": 6,
+  "YearBuilt": 1998,
+  "YearRemodAdd": 2012,
+  "TotalBsmtSF": 980,
+  "GarageCars": 2,
+  "FullBath": 2,
+  "BedroomAbvGr": 3,
+  "Neighborhood": "CollgCr",
+  "KitchenQual": "Gd",
+  "ExterQual": "Gd",
+  "CentralAir": "Y"
+}
